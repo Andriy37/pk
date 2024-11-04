@@ -9,6 +9,7 @@ class Game(ShowBase):
         self.land.loadLand("land.txt")
         self.hero = Hero((1,1,1),self.land)
         base.camLens.setFov(90)
+        
 
       
 
