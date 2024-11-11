@@ -69,6 +69,8 @@ class Hero():
 
         base.accept("b", self.build)
         base.accept("v", self.destroy)
+        base.accept('k', self.land.saveMap)
+        base.accept('l', self.land.loadMap)
        
 
 
@@ -180,40 +182,6 @@ class Hero():
         else:
             self.land.delBlockFrom(pos)
 
-    def isEmpty(self, pos):
-        return self.land.findAllMatches("=at=" + str(pos))
-    
-    def isEmpty(self, pos):
-        blocks = self.findBlock(pos)
-        if blocks:
-            return False
-        else:
-            return True
-        
-
-    def findHighestEmpty(self,pos):
-        x, y, z = pos
-        z = 1
-        while not self.isEmpty((x, y, z)):
-            z += 1
-        return(x, y, z)
-    
-    def builBlock(self, pos):
-        x, y, z = pos
-        new = self.findHighestEmpty(pos)
-        if new[2] <= z + 1:
-            self.addBlock(new)
-    
-    def delBlock(self, position):
-        blocks = self.findBlocks(position)
-        for block in blocks:
-            block.removeNode()
-
-    def delBlockFrom(self, position):
-        x, y, z = self.findHighestEmpty(position)
-        pos = x, y, z, z - 1
-        for block in self.findBlocks(pos):
-                block.removeNode()
 
      
 
